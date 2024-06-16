@@ -1,5 +1,6 @@
 library(reshape2)
 library(factoextra)
+library(ca)
 
 # Wczytaj dane z pliku CSV
 dane <- read.csv("https://raw.githubusercontent.com/KacperWardzala/correspondence_analysis/main/KULT_2159_CTAB_20240614100327%20-%20KULT_2159_CTAB_20240614100327.csv.csv", sep=",", header=TRUE)
@@ -36,6 +37,5 @@ V <- svd_result$v
 plot(rbind(U[,1:2], V[,1:2]), lwd = 3)
 biplot(MASS::corresp(data, nf = 2))
 
-library(ca)
 plot(ca::ca(data), mass=c(T,T))
 summary(ca::ca(data))
